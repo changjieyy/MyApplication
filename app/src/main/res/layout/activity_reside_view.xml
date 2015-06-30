@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.jie.application.custom.CustomSlidePanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#ff0000"
+        android:text=" menu " />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00ff00"
+        android:gravity="center"
+        android:text=" content " />
+
+</com.example.jie.application.custom.CustomSlidePanelLayout>
