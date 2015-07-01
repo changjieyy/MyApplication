@@ -107,11 +107,13 @@ public class MainActivity extends ActionBarActivity {
                 break;
             case R.id.uc:
                 startActivity(new Intent(this, UCActivity.class));
+                break;
             case R.id.act:
                 Intent intent =  new Intent(this, BActivity.class);
 //                intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 startActivity(intent);
+                break;
             default:
                 break;
         }

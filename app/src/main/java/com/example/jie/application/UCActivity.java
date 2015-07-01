@@ -1,6 +1,8 @@
 package com.example.jie.application;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -24,6 +26,7 @@ public class UCActivity extends ActionBarActivity {
     @InjectView(R.id.pop)
     Button mPop;
 
+    PopupWindow mPopView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,16 +49,32 @@ public class UCActivity extends ActionBarActivity {
 
                 TextView text1 = new TextView(this);
                 text1.setText(" this is pop ");
-                PopupWindow pop = new PopupWindow(text1, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT );
-                pop.showAsDropDown(mPop);
+                text1.setBackgroundColor(Color.RED);
+                mPopView = new PopupWindow(text1, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT );
+
+                mPopView.setFocusable(true);
+//                mPopView.setOutsideTouchable(true);
+                mPopView.setBackgroundDrawable(new ColorDrawable(android.R.color.transparent));
+
+                mPopView.showAsDropDown(mPop);
+                mPopView.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                    @Override
+                    public void onDismiss() {
+                        WindowManager.LayoutParams lp = getWindow().getAttributes();
+                        lp .alpha = 1.0f;
+                        getWindow().setAttributes(lp );
+                    }
+                });
 
                 //
-                WindowManager.LayoutParams a = getWindow().getAttributes();
-                a.alpha = 0.8f;
-                getWindow().setAttributes(a);
+                WindowManager.LayoutParams lp = getWindow().getAttributes();
+                lp .alpha = 0.8f;
+                getWindow().setAttributes(lp );
 
             default:
                 break;
         }
     }
+
+
 }
